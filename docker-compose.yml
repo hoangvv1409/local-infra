@@ -21,6 +21,14 @@ services:
       - POSTGRES_PASSWORD=upinus2017
       - POSTGRES_DB=bulkfulfill
 
+  mongodb:
+    image: mongo:4.0.4
+    ports:
+      - '27017:27017'
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=password
+
   sqlserver-ubuntu:
     image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     ports:
@@ -28,7 +36,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=Upatra@2021
-      - MSSQL_PID=Express 
+      - MSSQL_PID=Express
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
@@ -37,7 +45,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - 22181:2181
-  
+
   kafka:
     image: confluentinc/cp-kafka:latest
     depends_on:
